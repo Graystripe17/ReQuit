@@ -8,17 +8,120 @@
 
 import UIKit
 
-class ViewController: UIViewController {
 
+
+class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSource {
+    
+    // MARK: Properties
+    let slideNames = ["1 - Username", "2 - Phone", "3 - Email", "4MAss"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+//      The object that provides view controllers.
+//      Methods of the data source are called in response to gesture-based navigation. If the value of this property is nil, then gesture-based navigation is disabled.
+        dataSource = self
+        
+        let firstFragmentViewController = FragmentViewController()
+        firstFragmentViewController.slideName = slideNames[0]
+        
+        let viewControllers = [firstFragmentViewController]
+        
+        setViewControllers(viewControllers, direction: .forward, animated: true, completion: nil)
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        print("HIT")
+        
+        let currentSlideName = (viewController as! FragmentViewController).slideName
+        
+        let fragmentViewController = FragmentViewController()
+        
+        let index = slideNames.index(of: currentSlideName!)!
+        
+        if index < slideNames.count - 1 {
+            // Move forward
+            fragmentViewController.slideName = slideNames[index + 1]
+            return fragmentViewController
+        }
+        
+        return nil
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        print("GOTEM")
+        
+        let currentSlideName = (viewController as! FragmentViewController).slideName
+        
+        let fragmentViewController = FragmentViewController()
+        
+        let index = slideNames.index(of: currentSlideName!)!
+        
+        if index > 0 {
+            // Move backwards
+            fragmentViewController.slideName = slideNames[index - 1]
+            return fragmentViewController
+        }
+        
+        
+        
+        return nil
+    }
+    
+    
+}
+
+class FragmentViewController: UIViewController, UITextFieldDelegate, UIPageViewControllerDelegate {
+
+    
+    // MARK: Properties
+    @IBOutlet weak var usernameInstructionLabel: UILabel!
+    @IBOutlet weak var usernameInputField: UITextField!
+    
+    var slideName: String? {
+        didSet {
+            // Complete setting up the ViewController
+            print("new set")
+            self.view.backgroundColor = UIColor.red
+        }
+    }
+    
+    
+    // MARK: UITextFieldDelegate
+    
+    
+    
+    // MARK: Actions
+    
+    
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        usernameInputField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print(textField.text)
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = UIColor.brown
+        
+        // usernameInputField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
 
 
 }
