@@ -32,7 +32,6 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        print("HIT")
         
         let currentSlideName = (viewController as! FragmentViewController).slideName
         
@@ -50,7 +49,6 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        print("GOTEM")
         
         let currentSlideName = (viewController as! FragmentViewController).slideName
         
@@ -83,7 +81,8 @@ class FragmentViewController: UIViewController, UITextFieldDelegate, UIPageViewC
         didSet {
             // Complete setting up the ViewController
             print("new set")
-            self.view.backgroundColor = UIColor.red
+            let trac = Double(arc4random_uniform(256)) / Double(255)
+            self.view.backgroundColor = UIColor.init(red: CGFloat(trac), green: 50/255, blue: 70/255, alpha: 1)
         }
     }
     
