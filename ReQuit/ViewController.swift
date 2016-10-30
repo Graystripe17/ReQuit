@@ -13,7 +13,7 @@ import UIKit
 class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSource {
     
     // MARK: Properties
-    let slideNames = ["1 - Username", "2 - Phone", "3 - Email", "4MAss"]
+    let slideNames = ["1 - Username", "2 - Phone", "3 - Email", "4 - Más"]
     
     
     override func viewDidLoad() {
@@ -77,12 +77,20 @@ class FragmentViewController: UIViewController, UITextFieldDelegate, UIPageViewC
     @IBOutlet weak var usernameInstructionLabel: UILabel!
     @IBOutlet weak var usernameInputField: UITextField!
     
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return cv
+    }()
+    
+    
+    
     var slideName: String? {
         didSet {
             // Complete setting up the ViewController
             print("new set")
             let trac = Double(arc4random_uniform(256)) / Double(255)
-            self.view.backgroundColor = UIColor.init(red: CGFloat(trac), green: 50/255, blue: 70/255, alpha: 1)
+//            self.view.backgroundColor = UIColor.init(red: CGFloat(trac), green: 50/255, blue: 70/255, alpha: 1)
         }
     }
     
