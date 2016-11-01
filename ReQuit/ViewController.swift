@@ -118,6 +118,15 @@ class FragmentViewController: UIViewController, UITextFieldDelegate, UIPageViewC
         print(textField.text!)
     }
     
+    @IBAction func saveUsername(_ sender: UIButton) {
+        let username = usernameInputField.text
+     
+        let preferences = UserDefaults.standard
+        let usernameKey = "username"
+        preferences.set(username, forKey: usernameKey)
+        preferences.synchronize()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
