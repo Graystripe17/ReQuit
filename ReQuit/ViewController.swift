@@ -66,9 +66,11 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         
         return nil
     }
-    
-    
 }
+
+
+
+
 
 class FragmentViewController: UIViewController, UITextFieldDelegate, UIPageViewControllerDelegate {
 
@@ -76,6 +78,9 @@ class FragmentViewController: UIViewController, UITextFieldDelegate, UIPageViewC
     // MARK: Properties
     @IBOutlet weak var usernameInstructionLabel: UILabel!
     @IBOutlet weak var usernameInputField: UITextField!
+    
+    
+    
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -90,7 +95,7 @@ class FragmentViewController: UIViewController, UITextFieldDelegate, UIPageViewC
             // Complete setting up the ViewController
             print("new set")
             let trac = Double(arc4random_uniform(256)) / Double(255)
-//            self.view.backgroundColor = UIColor.init(red: CGFloat(trac), green: 50/255, blue: 70/255, alpha: 1)
+            self.view.backgroundColor = UIColor.init(red: CGFloat(trac), green: 50/255, blue: 70/255, alpha: 1)
         }
     }
     
@@ -110,7 +115,7 @@ class FragmentViewController: UIViewController, UITextFieldDelegate, UIPageViewC
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print(textField.text)
+        print(textField.text!)
     }
     
     
