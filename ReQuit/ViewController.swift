@@ -19,6 +19,8 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("This class is not currently in use.")
+        
 //      The object that provides view controllers.
 //      Methods of the data source are called in response to gesture-based navigation. If the value of this property is nil, then gesture-based navigation is disabled.
         dataSource = self
