@@ -1,0 +1,6 @@
+framework module Pods_ReQuitUITests {
+  umbrella header "Pods-ReQuitUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
