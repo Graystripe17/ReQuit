@@ -120,11 +120,12 @@
                         <outlet property="EmailField" destination="6Hm-TG-oBe" id="Y1e-al-myg"/>
                         <outlet property="emailField" destination="6Hm-TG-oBe" id="New-V5-prk"/>
                         <outlet property="passwordField" destination="rey-DD-zcV" id="6qd-Wy-n8q"/>
+                        <segue destination="0Ga-iB-YOY" kind="push" identifier="login" id="DR5-Eg-nJT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K1z-Ah-BJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="889.5" y="1092.5"/>
+            <point key="canvasLocation" x="1485" y="1090"/>
         </scene>
         <!--Info-->
         <scene sceneID="ppF-Md-DLl">
@@ -458,4 +459,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="DR5-Eg-nJT"/>
+    </inferredMetricsTieBreakers>
 </document>
