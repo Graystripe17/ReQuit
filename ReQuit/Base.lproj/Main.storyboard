@@ -143,8 +143,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="next:" destination="Nn8-Lh-l7B" eventType="touchUpInside" id="80I-p0-6dA"/>
-                                    <segue destination="Ga1-ro-7TU" kind="push" id="s5P-p8-04f"/>
+                                    <segue destination="Ga1-ro-7TU" kind="push" id="EUo-PZ-3Rd"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="First" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z1c-7l-8r7">
@@ -170,17 +169,12 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <connections>
-                            <outlet property="firstInput" destination="Z1c-7l-8r7" id="kc2-0h-lpG"/>
-                            <outlet property="lastInput" destination="vrd-eM-nwo" id="Rae-wT-bl2"/>
-                            <outlet property="usernameInput" destination="PC8-lc-qtq" id="i2h-fZ-xuf"/>
-                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Info" id="bJt-CQ-xRM" colorLabel="IBBuiltInLabel-Red"/>
+                    <navigationItem key="navigationItem" title="Info" id="68a-VZ-wev" colorLabel="IBBuiltInLabel-Red"/>
                     <connections>
-                        <outlet property="firstInput" destination="Z1c-7l-8r7" id="n1B-S9-MbM"/>
-                        <outlet property="lastInput" destination="vrd-eM-nwo" id="nQ4-tI-ngM"/>
-                        <outlet property="usernameInput" destination="PC8-lc-qtq" id="TgM-cP-yyA"/>
+                        <outlet property="firstInput" destination="Z1c-7l-8r7" id="qxH-jf-gPu"/>
+                        <outlet property="lastInput" destination="vrd-eM-nwo" id="yRP-bG-NyY"/>
+                        <outlet property="usernameInput" destination="PC8-lc-qtq" id="mTA-Bw-y05"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n80-JC-c3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -307,24 +301,25 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6S-QJ-qlu">
-                                            <rect key="frame" x="149" y="11" width="76" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5S-ej-GD1">
+                                            <rect key="frame" x="93" y="37" width="114" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6S-QJ-qlu">
+                                            <rect key="frame" x="93" y="8" width="114" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="hgjhgj" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nSb-gF-90L">
-                                            <rect key="frame" x="89" y="33" width="207" height="83"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="0.52743098811496736" blue="0.21528703688942441" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <outlet property="messageLabel" destination="nSb-gF-90L" id="XRd-HK-vrD"/>
+                                    <outlet property="messageLabel" destination="m5S-ej-GD1" id="sAd-U9-0N4"/>
                                     <outlet property="nameLabel" destination="t6S-QJ-qlu" id="fHU-4B-fX5"/>
                                 </connections>
                             </tableViewCell>

@@ -25,6 +25,8 @@ class User {
 class UserTableViewController: UITableViewController, UICollectionViewDelegateFlowLayout {
     
     // MARK: Properties
+    var currentUser: FIRUser?
+    
     var users = [User]()
     
     var newName: String?
@@ -40,25 +42,23 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.chatsTable.register(UITableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
-        
-        
         configureDatabase()
         
-        
-        let authUser = FIRAuth.auth()?.currentUser
-        let authUserID = authUser?.uid
-        
-        
         ref = FIRDatabase.database().reference()
-        
-        loadUsers(uid: authUserID)
         
     }
     
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        
+        self.currentUser = FIRAuth.auth()?.currentUser
+        
+        self.chatsTable = UITableView(coder: aDecoder)!
+        
+        self.chatsTable.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
+        
+        super.init(coder: aDecoder)
+        
     }
     
     func configureDatabase() {
@@ -67,21 +67,12 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
             // Beware of forced unwrapping
             self?.messages.append(snapshot)
             self?.chatsTable.insertRows(at: [IndexPath(row: (self?.messages.count)!-1, section: 0)], with: .automatic)
+            print("configuring")
+            print(String(describing: self?.messages.count))
+            
         })
     }
-    
-    
-    func loadUsers(uid: String?) {
-        
-        
-    }
-    
-    
-    func loadTestUsers() {
-        let u1 = User(name: "Sample Name 1", image: "Sample Image")
-        let u2 = User(name: "SN2", image: "Sample Image")
-        users += [u1, u2]
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -91,32 +82,30 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return users.count
+         return 13
     }
 
     // Data Source
     // Configure the cell
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UserTableViewCell {
 
         // What we named in the storyboard
         let cellIdentifier = "UserTableViewCell"
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! UserTableViewCell
         
-        let messageSnapshot: FIRDataSnapshot! = self.messages.removeFirst()
-        let message = messageSnapshot.value as! Dictionary<String, String>
-        let name = message["Names"] as String!
-        let text = message["Text"] as String!
+//        let messageSnapshot: FIRDataSnapshot! = self.messages.removeFirst()
+//        let message = messageSnapshot.value as! Dictionary<String, String>
+//        let name = message["Names"] as String?
+//        let text = message["Text"] as String?
         
         
-        cell.nameLabel.text = name
-        cell.messageLabel.text = text
-        
+        cell.nameLabel.text = "HELLO"
+        cell.messageLabel.text = "GOODBYE"
 
         return cell
     }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class SignInViewController: UIViewController {
     
@@ -19,6 +21,14 @@ class SignInViewController: UIViewController {
             
         } else {
             
+        }
+    }
+    
+    override func viewDidLoad() {
+        FIRApp.configure()
+        FIRAuth.auth()?.signIn(withEmail: "hakuna.matata.kitty@gmail.com", password: "password") {
+            (user, error) in
+            print("Wrong")
         }
     }
 }

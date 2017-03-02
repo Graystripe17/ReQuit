@@ -7,19 +7,22 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class UserTableViewCell: UITableViewCell {
 
     // MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var messageLabel: UITextView!
-
+    @IBOutlet weak var messageLabel: UILabel!
     
+
     @IBOutlet weak var profileImageView: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

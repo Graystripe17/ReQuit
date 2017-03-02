@@ -13,6 +13,7 @@ target 'ReQuit' do
   target 'ReQuitTests' do
     inherit! :search_paths
     # Pods for testing
+    pod ‘Firebase’
   end
 
   target 'ReQuitUITests' do
