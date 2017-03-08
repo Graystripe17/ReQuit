@@ -17,11 +17,7 @@ class SignInViewController: UIViewController {
     
     
     @IBAction func didTapLogin(_ sender: UIButton) {
-        if true {
-            
-        } else {
-            
-        }
+
     }
     
     override func viewDidLoad() {

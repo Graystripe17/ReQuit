@@ -98,14 +98,20 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! UserTableViewCell
         
-//        let messageSnapshot: FIRDataSnapshot! = self.messages.removeFirst()
+        ref.child("users").child(currentUser.displayName).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let username = value?["Username"] as? String ?? ""
+            
+        })
+        
+        let messageSnapshot: FIRDataSnapshot! = self.messages.removeFirst()
 //        let message = messageSnapshot.value as! Dictionary<String, String>
 //        let name = message["Names"] as String?
 //        let text = message["Text"] as String?
-        
-        
-        cell.nameLabel.text = "HELLO"
-        cell.messageLabel.text = "GOODBYE"
+//        
+//        
+//        cell.nameLabel.text = name
+//        cell.messageLabel.text = text
 
         return cell
     }

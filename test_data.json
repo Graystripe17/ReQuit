@@ -1,0 +1,47 @@
+
+{
+    "users": [
+        "username1":
+            "chats": [
+                "chatID1",
+                "chatID2",
+                "chatID3"
+            ]
+        ,
+        "username2":
+            "chats": [
+                "chatID2",
+                "chatID5"
+            ]
+    ],
+    "chats": [
+        "chatID1": [
+            "M1": {
+                "sender": "uid1",
+                "message": "Hey are you holding up to the NoSQL Standards",
+                "time": 13516
+            },
+            "M2": {
+                "sender": "uid2",
+                "message": "I love the way that Swift handles ARC",
+                "time": 14514
+            }
+        ],
+        "chatID2": [
+            "M1": {
+                "sender": "uid1",
+                "message": "NoSQL is flexible, but eats more memory",
+                "time": 13516
+            },
+            "M2": {
+                "sender": "uid2",
+                "message": "Carefully format your JSON",
+                "time": 14514
+            }
+        ],
+        "second": "wasap",
+        "third": "Test",
+        "fourth": "Another 4"
+    ]
+
+}
