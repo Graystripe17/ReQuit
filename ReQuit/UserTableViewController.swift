@@ -33,7 +33,7 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     
     var messages: [FIRDataSnapshot]! = [FIRDataSnapshot()]
     
-    var chatsList = [NSDictionary]()
+    var chatsList = [Chat]()
     
     fileprivate var _refHandle: FIRDatabaseHandle!
     
@@ -65,12 +65,19 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         // Variable captured by closure before being initialized,
         // Singular read of "users/username" which gives a list of chatIDs
         ref.child("users").child(currentUser.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            // An array of dictionaries
-            // Forced unwrap early
-            self.chatsList = (value?["chats"] as? [NSDictionary])!
-            print(self.chatsList)
+            guard snapshot.exists() else {
+                print("Error: Path not found")
+                return
+            }
             
+            let value = snapshot.value as? NSDictionary
+            // Convert a dict of dicts into an array of dicts
+            // You will lose chatID in the process, so be warned
+            // Unless you would like to to keep the data in a struct
+            for (key, secondDict) in value?["chats"] as! [String: NSDictionary] {
+                // TODO: Store the ChatID
+                self.chatsList.append(Chat(targetChat: secondDict))
+            }
         })
         
     }
@@ -99,9 +106,8 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // This force unwrap should be guaranteed if chatsList works
-        // Consider forcing chatsList to exist and handling the error further up the chain
-         return self.chatsList.count
+        print(chatsList)
+        return self.chatsList.count
     }
 
     // Data Source
@@ -113,20 +119,13 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! UserTableViewCell
         
-
+        let targetChat = chatsList[indexPath.row]
         
-        // The init code should have configured chatsList optional
-        let targetChat = self.chatsList[indexPath.row]
-        let name = targetChat["name"] as? String // If nil, anon
-        let last = targetChat["last"] as? String
-        let read = targetChat["read"] as? Bool
-        let updated = targetChat["updated"] as? Int
+        cell.nameLabel.text = targetChat.name
+        cell.messageLabel.text = targetChat.lastMessage
+        cell.dateLabel.text = targetChat.updatedTime.description
         
-        cell.nameLabel.text = name
-        cell.messageLabel.text = last
-        cell.dateLabel.text = updated?.description
-        
-        cell.setAppearance(disabled: read ?? false)
+        cell.setAppearance(disabled: targetChat.read)
         
         return cell
     }
@@ -135,51 +134,5 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     deinit {
         // Remove observer
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
