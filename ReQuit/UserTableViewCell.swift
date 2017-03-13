@@ -14,6 +14,7 @@ class UserTableViewCell: UITableViewCell {
     // MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
 
     @IBOutlet weak var profileImageView: UIImageView!
@@ -31,4 +32,12 @@ class UserTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setAppearance(disabled: Bool) {
+        if disabled {
+            self.alpha = 0.5
+        } else {
+            self.alpha = 1.0
+        }
+    }
+    
 }

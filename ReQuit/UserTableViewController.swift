@@ -25,15 +25,15 @@ class User {
 class UserTableViewController: UITableViewController, UICollectionViewDelegateFlowLayout {
     
     // MARK: Properties
-    var currentUser: FIRUser?
+    var currentUser: FIRUser
     
     var users = [User]()
-    
-    var newName: String?
     
     var ref: FIRDatabaseReference!
     
     var messages: [FIRDataSnapshot]! = [FIRDataSnapshot()]
+    
+    var chatsList = [NSDictionary]()
     
     fileprivate var _refHandle: FIRDatabaseHandle!
     
@@ -41,28 +41,41 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureDatabase()
-        
-        ref = FIRDatabase.database().reference()
-        
     }
     
     
     required init?(coder aDecoder: NSCoder) {
+        // Properties must be initialized before super.init call
         
-        self.currentUser = FIRAuth.auth()?.currentUser
+        self.ref = FIRDatabase.database().reference()
+        
+        // Beware of the force unwrapped user object
+        self.currentUser = (FIRAuth.auth()?.currentUser)!
         
         self.chatsTable = UITableView(coder: aDecoder)!
         
         self.chatsTable.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
         
+        
         super.init(coder: aDecoder)
+        
+        // Uses self in a closure, must follow super.init
+        configureDatabase()
+        
+        // Variable captured by closure before being initialized,
+        // Singular read of "users/username" which gives a list of chatIDs
+        ref.child("users").child(currentUser.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            // An array of dictionaries
+            // Forced unwrap early
+            self.chatsList = (value?["chats"] as? [NSDictionary])!
+            print(self.chatsList)
+            
+        })
         
     }
     
     func configureDatabase() {
-        ref = FIRDatabase.database().reference()
         _refHandle = self.ref.child("messages").observe(.childAdded, with: {[weak self] (snapshot) -> Void in
             // Beware of forced unwrapping
             self?.messages.append(snapshot)
@@ -86,7 +99,9 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return 13
+        // This force unwrap should be guaranteed if chatsList works
+        // Consider forcing chatsList to exist and handling the error further up the chain
+         return self.chatsList.count
     }
 
     // Data Source
@@ -98,21 +113,21 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! UserTableViewCell
         
-        ref.child("users").child(currentUser.displayName).observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            let username = value?["Username"] as? String ?? ""
-            
-        })
-        
-        let messageSnapshot: FIRDataSnapshot! = self.messages.removeFirst()
-//        let message = messageSnapshot.value as! Dictionary<String, String>
-//        let name = message["Names"] as String?
-//        let text = message["Text"] as String?
-//        
-//        
-//        cell.nameLabel.text = name
-//        cell.messageLabel.text = text
 
+        
+        // The init code should have configured chatsList optional
+        let targetChat = self.chatsList[indexPath.row]
+        let name = targetChat["name"] as? String // If nil, anon
+        let last = targetChat["last"] as? String
+        let read = targetChat["read"] as? Bool
+        let updated = targetChat["updated"] as? Int
+        
+        cell.nameLabel.text = name
+        cell.messageLabel.text = last
+        cell.dateLabel.text = updated?.description
+        
+        cell.setAppearance(disabled: read ?? false)
+        
         return cell
     }
     

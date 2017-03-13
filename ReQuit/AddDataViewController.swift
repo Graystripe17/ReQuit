@@ -16,7 +16,7 @@ class AddDataViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addNameSegue" {
             let destinationController = segue.destination as! UserTableViewController
-            destinationController.newName = newNameLabel.text
+//            destinationController.newName = newNameLabel.text
         }
     }
 }
