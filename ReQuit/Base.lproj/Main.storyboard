@@ -295,11 +295,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTableViewCell" rowHeight="150" id="akw-9f-lsT" customClass="UserTableViewCell" customModule="ReQuit">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UserTableViewCell" rowHeight="150" id="akw-9f-lsT" customClass="UserTableViewCell" customModule="ReQuit">
                                 <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="akw-9f-lsT" id="76j-WE-aB1">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5S-ej-GD1">
@@ -332,6 +332,7 @@
                                     <outlet property="dateLabel" destination="CZY-GA-5LB" id="9RO-Xt-0Vd"/>
                                     <outlet property="messageLabel" destination="m5S-ej-GD1" id="sAd-U9-0N4"/>
                                     <outlet property="nameLabel" destination="t6S-QJ-qlu" id="fHU-4B-fX5"/>
+                                    <segue destination="3xP-K1-qwM" kind="push" id="vL3-6Y-u88"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -341,6 +342,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ge-FK-NT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3292.5" y="234.5"/>
+        </scene>
+        <!--Conversation View Controller-->
+        <scene sceneID="Usy-as-z2p">
+            <objects>
+                <viewController id="3xP-K1-qwM" customClass="ConversationViewController" customModule="ReQuit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0AA-Ks-jLf"/>
+                        <viewControllerLayoutGuide type="bottom" id="ioC-aP-9qP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6yC-hG-Cm3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dmK-85-LLb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EKH-c0-5UA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3764" y="235"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="0wQ-fS-fnA">
@@ -375,7 +395,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKL-2w-jcE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3781" y="-803"/>
+            <point key="canvasLocation" x="3964" y="-666"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="7U1-fR-9mR">
@@ -418,7 +438,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjq-rn-OgO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3241" y="-804"/>
+            <point key="canvasLocation" x="3293" y="-667"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OOa-Uf-1iy">

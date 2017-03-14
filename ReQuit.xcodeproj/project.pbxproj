@@ -24,6 +24,7 @@
 		4FA1D5D61E5D3986007CF30A /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1D5D21E5D3986007CF30A /* UserTableViewCell.swift */; };
 		4FA1D5D71E5D3986007CF30A /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1D5D31E5D3986007CF30A /* UserTableViewController.swift */; };
 		4FA1D5D81E5D3986007CF30A /* AddDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1D5D41E5D3986007CF30A /* AddDataViewController.swift */; };
+		4FE5CC901E7745C4003C5A97 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE5CC8F1E7745C4003C5A97 /* ConversationViewController.swift */; };
 		921AC47CFCEC7ABDF9062B44 /* Pods_ReQuitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AADC670BC9398CF3055F604C /* Pods_ReQuitTests.framework */; };
 		E7C9F76400C7B598ABD9012A /* Pods_ReQuit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC8955C135E5F07EE3CE3E0 /* Pods_ReQuit.framework */; };
 		F2C027562E0E77BD94225914 /* Pods_ReQuitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A64796CA3062D4A8EB78C6 /* Pods_ReQuitUITests.framework */; };
@@ -73,6 +74,7 @@
 		4FA1D5D21E5D3986007CF30A /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		4FA1D5D31E5D3986007CF30A /* UserTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		4FA1D5D41E5D3986007CF30A /* AddDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDataViewController.swift; sourceTree = "<group>"; };
+		4FE5CC8F1E7745C4003C5A97 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		63EC73E039DF4DA35FA6729F /* Pods-ReQuit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReQuit.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReQuit/Pods-ReQuit.release.xcconfig"; sourceTree = "<group>"; };
 		89BC3B2D73177860132B8C35 /* Pods-ReQuitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReQuitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReQuitUITests/Pods-ReQuitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A25D24FCFDB29585F2EE7E0 /* Pods-ReQuitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReQuitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReQuitTests/Pods-ReQuitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				4F998F2A1DA5FB8200A9F8DC /* LaunchScreen.storyboard */,
 				4F998F2D1DA5FB8200A9F8DC /* Info.plist */,
 				4F5CDC781E1D9B6900CE3B25 /* NewContactViewController.swift */,
+				4FE5CC8F1E7745C4003C5A97 /* ConversationViewController.swift */,
 			);
 			path = ReQuit;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 			files = (
 				4F998F221DA5FB8200A9F8DC /* AppDelegate.swift in Sources */,
 				4FA1D5D71E5D3986007CF30A /* UserTableViewController.swift in Sources */,
+				4FE5CC901E7745C4003C5A97 /* ConversationViewController.swift in Sources */,
 				4F27BF021E22F081001A1807 /* AppState.swift in Sources */,
 				4F5CDC791E1D9B6900CE3B25 /* NewContactViewController.swift in Sources */,
 				4FA1D5D81E5D3986007CF30A /* AddDataViewController.swift in Sources */,
