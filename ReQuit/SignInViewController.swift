@@ -23,7 +23,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         FIRAuth.auth()?.signIn(withEmail: "hakuna.matata.kitty@gmail.com", password: "password") {
             (user, error) in
-            print("Wrong")
+            print("Logged into hmk")
         }
         performSegue(withIdentifier: "login", sender: self)
     }

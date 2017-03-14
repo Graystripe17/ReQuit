@@ -74,7 +74,7 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
             // Convert a dict of dicts into an array of dicts
             // You will lose chatID in the process, so be warned
             // Unless you would like to to keep the data in a struct
-            for (key, secondDict) in value?["chats"] as! [String: NSDictionary] {
+            for (chatIdKey, secondDict) in value?["chats"] as! [String: NSDictionary] {
                 // TODO: Store the ChatID
                 self.chatsList.append(Chat(targetChat: secondDict))
             }
@@ -87,8 +87,6 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
             // Beware of forced unwrapping
             self?.messages.append(snapshot)
             self?.chatsTable.insertRows(at: [IndexPath(row: (self?.messages.count)!-1, section: 0)], with: .automatic)
-            print("configuring")
-            print(String(describing: self?.messages.count))
             
         })
     }
@@ -106,7 +104,7 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(chatsList)
+
         return self.chatsList.count
     }
 
