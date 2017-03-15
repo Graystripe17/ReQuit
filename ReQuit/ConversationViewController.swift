@@ -11,11 +11,10 @@ import UIKit
 
 class ConversationViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private let cellId = "cellId"
-    
-    
+    var chatId: String = ""
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -23,14 +22,14 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         
         cell.backgroundColor = UIColor.cyan
         cell.textView.text = "21pilots"
-        cell.cellMessage.text = "WHOA"
-        
+        cell.cellMessage.text = chatId
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // Return the number of cells here
-        return 5
+        return 20
     }
+
 }

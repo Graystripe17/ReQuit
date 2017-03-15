@@ -13,14 +13,14 @@ struct Chat {
     let lastMessage: String
     let read: Bool
     let updatedTime: Int
-    let chatID: String?
+    let chatId: String
     
-    init (targetChat: NSDictionary) {
+    init (chatId: String, targetChat: NSDictionary) {
         self.name = targetChat["name"] as? String ?? "Anon" // If nil, anon
         self.lastMessage = targetChat["last"] as? String ?? "Message not found"
         self.read = targetChat["read"] as? Bool ?? false
         self.updatedTime = targetChat["updated"] as? Int ?? 0
-        self.chatID = "NO CHAT ID"
+        self.chatId = chatId
         
     }
     
@@ -29,6 +29,6 @@ struct Chat {
         self.lastMessage = lastMessage ?? "Message not found"
         self.read = read ?? false
         self.updatedTime = updatedTime ?? 0
-        self.chatID = "NO CHAT ID"
+        self.chatId = "NO CHAT ID"
     }
 }

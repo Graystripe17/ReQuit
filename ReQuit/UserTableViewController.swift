@@ -39,6 +39,8 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     
     var chatsTable: UITableView
     
+    var selectedChatId: String = "unselected"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -76,7 +78,7 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
             // Unless you would like to to keep the data in a struct
             for (chatIdKey, secondDict) in value?["chats"] as! [String: NSDictionary] {
                 // TODO: Store the ChatID
-                self.chatsList.append(Chat(targetChat: secondDict))
+                self.chatsList.append(Chat(chatId: chatIdKey, targetChat: secondDict))
             }
         })
         
@@ -129,8 +131,42 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     }
     
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedChatId = chatsList[indexPath.row].chatId
+        performSegue(withIdentifier: "openConversation", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openConversation" {
+            let conversationViewController = segue.destination as! ConversationViewController
+            conversationViewController.chatId = selectedChatId
+        }
+    }
+    
+    
     deinit {
         // Remove observer
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
