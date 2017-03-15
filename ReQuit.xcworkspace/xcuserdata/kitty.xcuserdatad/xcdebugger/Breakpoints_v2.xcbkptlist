@@ -81,5 +81,68 @@
             endingLineNumber = "10">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ReQuit/ConversationViewController.swift"
+            timestampString = "511246432.864112"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "ConversationViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReQuit.ConversationViewController.init (collectionViewLayout : __ObjC.UICollectionViewLayout) -&gt; ReQuit.ConversationViewController"
+                  moduleName = "ReQuit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kitty/GitHub/ReQuit/ReQuit/ConversationViewController.swift"
+                  timestampString = "511246433.182033"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "35">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReQuit.ConversationViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; ReQuit.ConversationViewController"
+                  moduleName = "ReQuit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kitty/GitHub/ReQuit/ReQuit/ConversationViewController.swift"
+                  timestampString = "511246433.183609"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "81">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ReQuit.ConversationViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;ReQuit.ConversationViewController&gt;"
+                  moduleName = "ReQuit"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kitty/GitHub/ReQuit/ReQuit/ConversationViewController.swift"
+                  timestampString = "511246433.18504"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "35">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
