@@ -27,15 +27,15 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
         
-        cell.cellMessage.text = chatId + "asdfasdjkahrgsejkrhgsekjrhgsjkdfhgsdjkf\n\nusfhdasu"
+        cell.cellMessage.text = chatId + "asdfasdjka\n\n\n\nhrgsejkrhgsekjrhgsjkdfhgsdjkf\n\nusfhdasu"
         
 
         
         // Height frame
-        let fixedHeight = cell.cellMessage.frame.size.height
-        let bestFit = cell.cellMessage.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: fixedHeight))
+//        let fixedHeight = cell.cellMessage.frame.size.height
+//        let bestFit = cell.cellMessage.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: fixedHeight))
         
-        cell.frame.size = CGSize(width: bestFit.width, height: max(bestFit.height, fixedHeight))
+        cell.frame.size = CGSize(width: 500, height: (cell.cellMessage.text?.getEstimatedHeight(width: 500, font: UIFont(name: "Helvetica", size: 16)!))!)
         
         
         if cell.authorId == currentUser.uid {
@@ -54,6 +54,18 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     }
 
 }
+
+
+extension String {
+    func getEstimatedHeight(width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+
+        return boundingBox.height
+    }
+}
+
 
 
 
