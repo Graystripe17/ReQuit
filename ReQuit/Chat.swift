@@ -21,7 +21,6 @@ struct Chat {
         self.read = targetChat["read"] as? Bool ?? false
         self.updatedTime = targetChat["updated"] as? Int ?? 0
         self.chatId = chatId
-        
     }
     
     init (name: String?, lastMessage: String?, read: Bool?, updatedTime: Int?) {

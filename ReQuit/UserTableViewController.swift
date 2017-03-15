@@ -77,7 +77,8 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
             // You will lose chatID in the process, so be warned
             // Unless you would like to to keep the data in a struct
             for (chatIdKey, secondDict) in value?["chats"] as! [String: NSDictionary] {
-                // TODO: Store the ChatID
+                // This only appends metadata for the last chat
+                // Does not load every chat message
                 self.chatsList.append(Chat(chatId: chatIdKey, targetChat: secondDict))
             }
         })
@@ -132,6 +133,7 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Set value of chatId
         selectedChatId = chatsList[indexPath.row].chatId
         performSegue(withIdentifier: "openConversation", sender: self)
     }
