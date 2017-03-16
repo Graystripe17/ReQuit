@@ -35,9 +35,9 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         
         // Load messages of chatId
         // Should be .childAdded
-        FIRDatabase.database().reference().child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard snapshot.exists() else { return }
-            print(snapshot)
+            let value = snapshot.value
         })
         
         
@@ -67,7 +67,6 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         
         cell.frame.size = CGSize(width: 500, height: (cell.cellMessage.text?.getEstimatedHeight(width: 500, font: UIFont(name: "Helvetica", size: 16)!))!)
         
-        
         if messages[indexPath.row].sender == currentUser.uid {
             // You sent this message
             cell.backgroundColor = UIColor.purple
@@ -78,10 +77,7 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // Return the number of cells here
-        return 2
-    }
+    // Do not specify number of items in section until table fully loaded.
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 80)
