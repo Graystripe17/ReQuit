@@ -13,9 +13,9 @@ struct Message {
     let message: String
     let time: Int
     
-    init (messageDetails: NSDictionary) {
-        self.sender = messageDetails["sender"] as? String ?? "Anon" // If nil, anon
-        self.message = messageDetails["message"] as? String ?? "Message not found"
-        self.time = messageDetails["time"] as? Int ?? 0
+    init (messageDetails: NSDictionary?) {
+        self.sender = messageDetails?["sender"] as? String ?? "Anon" // If nil, anon
+        self.message = messageDetails?["message"] as? String ?? "Message not found"
+        self.time = messageDetails?["time"] as? Int ?? 0
     }
 }

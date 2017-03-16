@@ -39,7 +39,7 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     
     var chatsTable: UITableView
     
-    var selectedChatId: String = "unselected"
+    var selectedChatId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,13 +74,15 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
             
             let value = snapshot.value as? NSDictionary
             // Convert a dict of dicts into an array of dicts
-            // You will lose chatID in the process, so be warned
-            // Unless you would like to to keep the data in a struct
             for (chatIdKey, secondDict) in value?["chats"] as! [String: NSDictionary] {
                 // This only appends metadata for the last chat
                 // Does not load every chat message
                 self.chatsList.append(Chat(chatId: chatIdKey, targetChat: secondDict))
             }
+            // After all of them have been appended, refresh the table.
+            DispatchQueue.main.async(execute: {
+                self.chatsTable.reloadData()
+            })
         })
         
     }

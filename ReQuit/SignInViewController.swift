@@ -23,8 +23,9 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         FIRAuth.auth()?.signIn(withEmail: "hakuna.matata.kitty@gmail.com", password: "password") {
             (user, error) in
+            // TODO: SET UP A SPINNER ICON
             print("Logged into hmk")
+            self.performSegue(withIdentifier: "login", sender: self)
         }
-        performSegue(withIdentifier: "login", sender: self)
     }
 }

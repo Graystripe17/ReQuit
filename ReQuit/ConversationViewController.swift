@@ -13,40 +13,52 @@ import Firebase
 class ConversationViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private let cellId = "cellId"
     var chatId: String!
-    var currentUser: FIRUser
+    var currentUser: FIRUser {
+        didSet {
+            // THIS DONT WORK
+            // observeMessages()
+        }
+    }
     var ref: FIRDatabaseReference!
     var messages = [Message]()
  
     required init?(coder: NSCoder) {
         currentUser = (FIRAuth.auth()?.currentUser)!
+
         self.ref = FIRDatabase.database().reference()
 
         super.init(coder: coder)
-
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func observeMessages() {
         
         // Load messages of chatId
-        ref.child("chats").child(chatId).observe(.childAdded, with: { (snapshot) in
+        // Should be .childAdded
+        FIRDatabase.database().reference().child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+            guard snapshot.exists() else { return }
+            print(snapshot)
+        })
+        
+        
+        ref.child("chats").child(chatId).observe(.value, with: { (snapshot) in
             guard snapshot.exists() else {
                 return
             }
             
             let value = snapshot.value as? NSDictionary
             
-            for messageDetails in value as! [NSDictionary] {
-                self.messages.append(Message(messageDetails: messageDetails))
-            }
-            
+            self.messages.append(Message(messageDetails: value))
         })
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        observeMessages()
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
-        
         cell.cellMessage.text = messages[indexPath.row].message
         
         // Height frame
@@ -68,7 +80,7 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // Return the number of cells here
-        return messages.count
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
