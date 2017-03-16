@@ -44,6 +44,12 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
             let value = snapshot.value as? NSDictionary
             
             self.messages.append(Message(messageDetails: value))
+            // Sort messages ascending
+            self.messages.sort(by: {
+                (m1, m2) in
+                return m1.time < m2.time
+            })
+            
             // After messages is populated, load data
             DispatchQueue.main.async(execute: {
                 self.conversationView.reloadData()
@@ -66,9 +72,6 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
         cell.cellMessage.text = messages[indexPath.row].message
         
-        // Height frame
-//        let fixedHeight = cell.cellMessage.frame.size.height
-//        let bestFit = cell.cellMessage.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: fixedHeight))
         
         cell.frame.size = CGSize(width: 500, height: (cell.cellMessage.text?.getEstimatedHeight(width: 500, font: UIFont(name: "Helvetica", size: 16)!))!)
         print(cell.frame.size)
