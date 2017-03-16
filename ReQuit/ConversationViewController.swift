@@ -13,9 +13,10 @@ import Firebase
 class ConversationViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private let cellId = "cellId"
     var chatId: String!
+    @IBOutlet var conversationView: UICollectionView!
     var currentUser: FIRUser {
         didSet {
-            // THIS DONT WORK
+            // This is called in the same thread as init
             // observeMessages()
         }
     }
@@ -35,13 +36,7 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         
         // Load messages of chatId
         // Should be .childAdded
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            guard snapshot.exists() else { return }
-            let value = snapshot.value
-        })
-        
-        
-        ref.child("chats").child(chatId).observe(.value, with: { (snapshot) in
+        ref.child("chats").child(chatId).observe(.childAdded, with: { (snapshot) in
             guard snapshot.exists() else {
                 return
             }
@@ -49,7 +44,17 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
             let value = snapshot.value as? NSDictionary
             
             self.messages.append(Message(messageDetails: value))
+            // After messages is populated, load data
+            DispatchQueue.main.async(execute: {
+                self.conversationView.reloadData()
+            })
+
         })
+//        self.conversationView.performBatchUpdates({
+//            let location = [IndexPath(row: (self.messages.count) - 1, section: 0)]
+//            self.conversationView.insertItems(at: location)
+//        }, completion: {(success) in print(success)})
+        
     }
     
     override func viewDidLoad() {

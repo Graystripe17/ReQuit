@@ -391,6 +391,9 @@
                         </cells>
                     </collectionView>
                     <navigationItem key="navigationItem" id="dmK-85-LLb"/>
+                    <connections>
+                        <outlet property="conversationView" destination="teA-as-iNn" id="CNe-om-Qjm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKH-c0-5UA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

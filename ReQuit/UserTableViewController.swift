@@ -70,9 +70,10 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         _refHandle = self.ref.child("messages").observe(.childAdded, with: {[weak self] (snapshot) -> Void in
             // Beware of forced unwrapping
             self?.messages.append(snapshot)
-            self?.chatsTable.beginUpdates()
-                self?.chatsTable.insertRows(at: [IndexPath(row: (self?.messages.count)! - 1, section: 0)], with: .automatic)
-            self?.chatsTable.endUpdates()
+            // This code essentially does nothing at this point in time
+//            self?.chatsTable.beginUpdates()
+//                self?.chatsTable.insertRows(at: [IndexPath(row: (self?.messages.count)! - 1, section: 0)], with: .automatic)
+//            self?.chatsTable.endUpdates()
         })
     }
     
