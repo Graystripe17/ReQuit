@@ -37,7 +37,7 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     
     fileprivate var _refHandle: FIRDatabaseHandle!
     
-    @IBOutlet weak var chatsTable: UserTableViewCell!
+    @IBOutlet var chatsTable: UITableView!
     
     var selectedChatId: String!
     
@@ -54,16 +54,29 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         // Beware of the force unwrapped user object
         self.currentUser = (FIRAuth.auth()?.currentUser)!
         
-        self.chatsTable = UITableView(coder: aDecoder)!
-        
-        self.chatsTable.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
+//        self.chatsTable.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
         
         
         super.init(coder: aDecoder)
         
         // Uses self in a closure, must follow super.init
-        configureDatabase()
+        // Sets up table and messages
+        setUpTable()
         
+        updateAndReload()
+    }
+    
+    func setUpTable() {
+        _refHandle = self.ref.child("messages").observe(.childAdded, with: {[weak self] (snapshot) -> Void in
+            // Beware of forced unwrapping
+            self?.messages.append(snapshot)
+            self?.chatsTable.beginUpdates()
+                self?.chatsTable.insertRows(at: [IndexPath(row: (self?.messages.count)! - 1, section: 0)], with: .automatic)
+            self?.chatsTable.endUpdates()
+        })
+    }
+    
+    func updateAndReload() {
         // Variable captured by closure before being initialized,
         // Singular read of "users/username" which gives a list of chatIDs
         ref.child("users").child(currentUser.uid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -84,16 +97,6 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
                 // Is chatsTable even the right one
                 self.chatsTable.reloadData()
             })
-        })
-
-    }
-    
-    func configureDatabase() {
-        _refHandle = self.ref.child("messages").observe(.childAdded, with: {[weak self] (snapshot) -> Void in
-            // Beware of forced unwrapping
-            self?.messages.append(snapshot)
-            self?.chatsTable.insertRows(at: [IndexPath(row: (self?.messages.count)!-1, section: 0)], with: .automatic)
-            
         })
     }
 

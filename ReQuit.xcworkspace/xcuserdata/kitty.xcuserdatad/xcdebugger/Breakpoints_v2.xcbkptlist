@@ -198,7 +198,7 @@
                   moduleName = "ReQuit"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kitty/GitHub/ReQuit/ReQuit/ConversationViewController.swift"
-                  timestampString = "511329949.36586"
+                  timestampString = "511331510.328196"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"
@@ -213,7 +213,7 @@
                   moduleName = "ReQuit"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kitty/GitHub/ReQuit/ReQuit/ConversationViewController.swift"
-                  timestampString = "511329949.366987"
+                  timestampString = "511331510.330092"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "45"
@@ -246,7 +246,7 @@
                   moduleName = "ReQuit"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kitty/GitHub/ReQuit/ReQuit/ConversationViewController.swift"
-                  timestampString = "511329949.369272"
+                  timestampString = "511331510.332714"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "38"
@@ -261,7 +261,7 @@
                   moduleName = "ReQuit"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kitty/GitHub/ReQuit/ReQuit/ConversationViewController.swift"
-                  timestampString = "511329949.37055"
+                  timestampString = "511331510.334227"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "39"
@@ -269,86 +269,6 @@
                   offsetFromSymbolStart = "15">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ReQuit/UserTableViewController.swift"
-            timestampString = "511329940.818262"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "init(coder:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ReQuit.UserTableViewController.(init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;ReQuit.UserTableViewController&gt;).(closure #1)"
-                  moduleName = "ReQuit"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kitty/GitHub/ReQuit/ReQuit/UserTableViewController.swift"
-                  timestampString = "511329949.374484"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "595">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ReQuit.UserTableViewController.(init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;ReQuit.UserTableViewController&gt;).(closure #1)"
-                  moduleName = "ReQuit"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kitty/GitHub/ReQuit/ReQuit/UserTableViewController.swift"
-                  timestampString = "511329949.375609"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "3260">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ReQuit/UserTableViewController.swift"
-            timestampString = "511329999.491695"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "init(coder:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ReQuit/UserTableViewController.swift"
-            timestampString = "511330000.923804"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "init(coder:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

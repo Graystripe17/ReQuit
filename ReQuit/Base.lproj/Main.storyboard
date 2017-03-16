@@ -338,6 +338,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item 1" id="xKj-WJ-31z"/>
                     <connections>
+                        <outlet property="chatsTable" destination="WDo-k6-phO" id="0tK-KQ-YoD"/>
                         <segue destination="3xP-K1-qwM" kind="push" identifier="openConversation" id="w4h-xY-obX"/>
                     </connections>
                 </viewController>
@@ -361,7 +362,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellId" id="yJr-mJ-8OU" customClass="ChatMessageCell" customModule="ReQuit" customModuleProvider="target">
-                                <rect key="frame" x="14" y="0.0" width="348" height="113"/>
+                                <rect key="frame" x="13.5" y="0.0" width="348" height="113"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="348" height="113"/>
