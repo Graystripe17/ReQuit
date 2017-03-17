@@ -371,6 +371,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWE-Fn-K0J">
                                             <rect key="frame" x="312" y="0.0" width="63" height="50"/>
                                             <state key="normal" title="Send"/>
+                                            <connections>
+                                                <action selector="sendButtonPressed:" destination="3xP-K1-qwM" eventType="touchUpInside" id="T2G-ay-SEy"/>
+                                            </connections>
                                         </button>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSA-js-oRa">
                                             <rect key="frame" x="8" y="8" width="290" height="30"/>
@@ -434,6 +437,7 @@
                     <navigationItem key="navigationItem" id="dmK-85-LLb"/>
                     <connections>
                         <outlet property="conversationView" destination="teA-as-iNn" id="CNe-om-Qjm"/>
+                        <outlet property="messageField" destination="VSA-js-oRa" id="k1g-tj-xfS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKH-c0-5UA" userLabel="First Responder" sceneMemberID="firstResponder"/>

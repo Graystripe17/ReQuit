@@ -14,6 +14,9 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     private let cellId = "cellId"
     var chatId: String!
     @IBOutlet var conversationView: UICollectionView!
+    
+    @IBOutlet weak var messageField: UITextField!
+    
     var currentUser: FIRUser {
         didSet {
             // This is called in the same thread as init
@@ -97,6 +100,20 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 80)
     }
+    
+    @IBAction func sendButtonPressed(_ sender: Any) {
+        guard let intentMessage = messageField.text else { return }
+        
+        let payload = [
+            "message": intentMessage,
+            "sender": currentUser.uid
+        ] as [String : Any]
+        
+        self.ref.child("chats").child(chatId).child(NSDate().timeIntervalSince1970).setValue(payload)
+        
+    }
+    
+    
 
 }
 
