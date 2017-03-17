@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -360,26 +361,66 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
+                        <view key="backgroundView" contentMode="center" id="WQj-p3-Hyl">
+                            <rect key="frame" x="0.0" y="-64" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2yd-vh-j9f">
+                                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWE-Fn-K0J">
+                                            <rect key="frame" x="312" y="0.0" width="63" height="50"/>
+                                            <state key="normal" title="Send"/>
+                                        </button>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSA-js-oRa">
+                                            <rect key="frame" x="8" y="8" width="290" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="0hz-UI-Rym"/>
+                                        <constraint firstAttribute="bottom" secondItem="tWE-Fn-K0J" secondAttribute="bottom" id="3hj-xj-IbJ"/>
+                                        <constraint firstItem="VSA-js-oRa" firstAttribute="leading" secondItem="2yd-vh-j9f" secondAttribute="leading" id="Ayp-HD-J5l"/>
+                                        <constraint firstItem="tWE-Fn-K0J" firstAttribute="leading" secondItem="VSA-js-oRa" secondAttribute="trailing" constant="8" id="Hyh-Vh-eYR"/>
+                                        <constraint firstItem="VSA-js-oRa" firstAttribute="top" secondItem="2yd-vh-j9f" secondAttribute="top" id="RUP-Km-nTG"/>
+                                        <constraint firstItem="tWE-Fn-K0J" firstAttribute="height" secondItem="2yd-vh-j9f" secondAttribute="height" id="S0w-Af-KJz"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="VSA-js-oRa" secondAttribute="bottom" id="WhW-oa-h9h"/>
+                                        <constraint firstItem="VSA-js-oRa" firstAttribute="height" secondItem="2yd-vh-j9f" secondAttribute="height" id="ir1-u6-evu"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="tWE-Fn-K0J" secondAttribute="trailing" id="pCC-UE-Weo"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="2yd-vh-j9f" firstAttribute="leading" secondItem="WQj-p3-Hyl" secondAttribute="leading" id="Ngo-HO-UeX"/>
+                                <constraint firstAttribute="bottom" secondItem="2yd-vh-j9f" secondAttribute="bottom" id="pzo-CW-pCX"/>
+                                <constraint firstItem="2yd-vh-j9f" firstAttribute="width" secondItem="WQj-p3-Hyl" secondAttribute="width" id="xss-R2-Yhp"/>
+                            </constraints>
+                        </view>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellId" id="yJr-mJ-8OU" customClass="ChatMessageCell" customModule="ReQuit" customModuleProvider="target">
-                                <rect key="frame" x="13.5" y="0.0" width="348" height="113"/>
+                                <rect key="frame" x="14" y="0.0" width="348" height="113"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="348" height="113"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWk-eb-aCq">
-                                            <rect key="frame" x="-14" y="-277" width="375" height="667"/>
+                                            <rect key="frame" x="-13.5" y="-18" width="375" height="149"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Placeholder Message" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjh-9J-xxL">
+                                                    <rect key="frame" x="21" y="26" width="334" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Placeholder Message" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjh-9J-xxL">
-                                            <rect key="frame" x="8" y="0.0" width="158" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="17"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" red="0.83662564766839376" green="0.064947315787900264" blue="0.18952571556733697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

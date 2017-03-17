@@ -73,8 +73,11 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         cell.cellMessage.text = messages[indexPath.row].message
         
         
-        cell.frame.size = CGSize(width: 500, height: (cell.cellMessage.text?.getEstimatedHeight(width: 500, font: UIFont(name: "Helvetica", size: 16)!))!)
-        print(cell.frame.size)
+        cell.frame.size = CGSize(width: 200, height: (cell.cellMessage.text?.getEstimatedHeight(width: 200, font: UIFont(name: "Helvetica", size: 16)!))!)
+        
+        // Center
+        cell.cellMessage.textAlignment = .center
+        
         
         if messages[indexPath.row].sender == currentUser.uid {
             // You sent this message
@@ -104,7 +107,7 @@ extension String {
 
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
 
-        return boundingBox.height + 20
+        return boundingBox.height + 60
     }
 }
 

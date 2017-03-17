@@ -95,7 +95,6 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
             }
             // After all of them have been appended, refresh the table.
             DispatchQueue.main.async(execute: {
-                // Is chatsTable even the right one
                 self.chatsTable.reloadData()
             })
         })
