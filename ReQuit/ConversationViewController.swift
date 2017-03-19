@@ -17,6 +17,9 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     
     @IBOutlet weak var messageField: UITextField!
     
+    @IBOutlet weak var bottomBar: UIView!
+    
+    
     var currentUser: FIRUser {
         didSet {
             // This is called in the same thread as init
@@ -30,7 +33,7 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         currentUser = (FIRAuth.auth()?.currentUser)!
 
         self.ref = FIRDatabase.database().reference()
-
+        
         super.init(coder: coder)
         
     }
@@ -58,6 +61,7 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
                 self.conversationView.reloadData()
             })
 
+            
         })
 //        self.conversationView.performBatchUpdates({
 //            let location = [IndexPath(row: (self.messages.count) - 1, section: 0)]
@@ -69,6 +73,9 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         observeMessages()
+        
+        conversationView.bringSubview(toFront: bottomBar)
+
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -102,14 +109,18 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     }
     
     @IBAction func sendButtonPressed(_ sender: Any) {
+        if messageField.text == "" { return }
         guard let intentMessage = messageField.text else { return }
+        
+        messageField.text = ""
         
         let payload = [
             "message": intentMessage,
-            "sender": currentUser.uid
+            "sender": currentUser.uid,
+            "time": NSDate().timeIntervalSince1970
         ] as [String : Any]
         
-        self.ref.child("chats").child(chatId).child(NSDate().timeIntervalSince1970).setValue(payload)
+        self.ref.child("chats").child(chatId).childByAutoId().setValue(payload)
         
     }
     
