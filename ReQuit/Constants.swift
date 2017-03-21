@@ -6,7 +6,7 @@
 //  Copyright © 2017 Winston Van. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Constants {
     
@@ -17,6 +17,12 @@ struct Constants {
     struct Segues {
         static let SignIn = "signInSegue"
         static let SignUp = "signUpSegue"
+    }
+    
+    struct Screen {
+        static let screenSize = UIScreen.main.bounds
+        static let subWidth = screenSize.width * 0.75
+        
     }
     
 }

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -354,7 +353,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" id="teA-as-iNn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gW7-AQ-lyi">
                             <size key="itemSize" width="348" height="113"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -363,74 +362,72 @@
                         </collectionViewFlowLayout>
                         <view key="backgroundView" contentMode="center" id="WQj-p3-Hyl">
                             <rect key="frame" x="0.0" y="-64" width="375" height="667"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2yd-vh-j9f">
-                                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="376" width="375" height="50"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWE-Fn-K0J">
-                                            <rect key="frame" x="312" y="0.0" width="63" height="50"/>
+                                            <rect key="frame" x="312" y="0.0" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="lv9-bG-GnP"/>
+                                            </constraints>
                                             <state key="normal" title="Send"/>
                                             <connections>
                                                 <action selector="sendButtonPressed:" destination="3xP-K1-qwM" eventType="touchUpInside" id="T2G-ay-SEy"/>
                                             </connections>
                                         </button>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSA-js-oRa">
-                                            <rect key="frame" x="8" y="8" width="290" height="30"/>
+                                            <rect key="frame" x="8" y="1" width="296" height="50"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="0hz-UI-Rym"/>
-                                        <constraint firstAttribute="bottom" secondItem="tWE-Fn-K0J" secondAttribute="bottom" id="3hj-xj-IbJ"/>
-                                        <constraint firstItem="VSA-js-oRa" firstAttribute="leading" secondItem="2yd-vh-j9f" secondAttribute="leading" id="Ayp-HD-J5l"/>
-                                        <constraint firstItem="tWE-Fn-K0J" firstAttribute="leading" secondItem="VSA-js-oRa" secondAttribute="trailing" constant="8" id="Hyh-Vh-eYR"/>
-                                        <constraint firstItem="VSA-js-oRa" firstAttribute="top" secondItem="2yd-vh-j9f" secondAttribute="top" id="RUP-Km-nTG"/>
-                                        <constraint firstItem="tWE-Fn-K0J" firstAttribute="height" secondItem="2yd-vh-j9f" secondAttribute="height" id="S0w-Af-KJz"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="VSA-js-oRa" secondAttribute="bottom" id="WhW-oa-h9h"/>
-                                        <constraint firstItem="VSA-js-oRa" firstAttribute="height" secondItem="2yd-vh-j9f" secondAttribute="height" id="ir1-u6-evu"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="tWE-Fn-K0J" secondAttribute="trailing" id="pCC-UE-Weo"/>
+                                        <constraint firstAttribute="trailing" secondItem="tWE-Fn-K0J" secondAttribute="trailing" constant="13" id="46m-0e-87O"/>
+                                        <constraint firstItem="VSA-js-oRa" firstAttribute="leading" secondItem="2yd-vh-j9f" secondAttribute="leading" constant="8" id="5G8-3O-cLF"/>
+                                        <constraint firstAttribute="bottom" secondItem="tWE-Fn-K0J" secondAttribute="bottom" id="OGv-bG-lQ3"/>
+                                        <constraint firstAttribute="bottom" secondItem="tWE-Fn-K0J" secondAttribute="bottom" id="Qay-tK-fPu"/>
+                                        <constraint firstItem="tWE-Fn-K0J" firstAttribute="leading" secondItem="VSA-js-oRa" secondAttribute="trailing" constant="8" id="aWD-6Z-Kfb"/>
+                                        <constraint firstAttribute="bottom" secondItem="VSA-js-oRa" secondAttribute="bottom" constant="7" id="of8-Yz-3Ld"/>
+                                        <constraint firstAttribute="trailing" secondItem="tWE-Fn-K0J" secondAttribute="trailing" constant="8" id="vbt-44-vac"/>
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="2yd-vh-j9f" firstAttribute="leading" secondItem="WQj-p3-Hyl" secondAttribute="leading" id="Ngo-HO-UeX"/>
-                                <constraint firstAttribute="bottom" secondItem="2yd-vh-j9f" secondAttribute="bottom" id="pzo-CW-pCX"/>
-                                <constraint firstItem="2yd-vh-j9f" firstAttribute="width" secondItem="WQj-p3-Hyl" secondAttribute="width" id="xss-R2-Yhp"/>
+                                <constraint firstItem="2yd-vh-j9f" firstAttribute="leading" secondItem="WQj-p3-Hyl" secondAttribute="leading" id="07H-Wa-SIV"/>
+                                <constraint firstItem="2yd-vh-j9f" firstAttribute="width" secondItem="WQj-p3-Hyl" secondAttribute="width" id="3j3-dc-P2v"/>
+                                <constraint firstAttribute="bottom" secondItem="2yd-vh-j9f" secondAttribute="bottom" id="UnP-l4-ajT"/>
                             </constraints>
                         </view>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellId" id="yJr-mJ-8OU" customClass="ChatMessageCell" customModule="ReQuit" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottomRight" reuseIdentifier="cellId" id="yJr-mJ-8OU" customClass="ChatMessageCell" customModule="ReQuit" customModuleProvider="target">
                                 <rect key="frame" x="13.5" y="0.0" width="348" height="113"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="348" height="113"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWk-eb-aCq">
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWk-eb-aCq">
                                             <rect key="frame" x="-13.5" y="-18" width="375" height="149"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Placeholder Message" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjh-9J-xxL">
                                                     <rect key="frame" x="21" y="26" width="334" height="38"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" red="0.83662564766839376" green="0.064947315787900264" blue="0.18952571556733697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <outlet property="bubbleView" destination="dWk-eb-aCq" id="umI-zR-gUX"/>
-                                    <outlet property="cellMessage" destination="tjh-9J-xxL" id="XOn-6s-eo3"/>
+                                    <outlet property="bubbleView" destination="dWk-eb-aCq" id="UJq-Ak-1er"/>
+                                    <outlet property="cellMessage" destination="tjh-9J-xxL" id="qPU-7l-AkG"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

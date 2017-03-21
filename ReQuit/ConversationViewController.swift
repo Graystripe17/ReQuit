@@ -19,6 +19,8 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     
     @IBOutlet weak var bottomBar: UIView!
     
+    let screenSize = UIScreen.main.bounds
+    
     
     var currentUser: FIRUser {
         didSet {
@@ -50,14 +52,15 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
             let value = snapshot.value as? NSDictionary
             
             self.messages.append(Message(messageDetails: value))
-            // Sort messages ascending
-            self.messages.sort(by: {
-                (m1, m2) in
-                return m1.time < m2.time
-            })
-            
+
             // After messages is populated, load data
             DispatchQueue.main.async(execute: {
+                // Sort messages ascending
+                self.messages.sort(by: {
+                    (m1, m2) in
+                    return m1.time < m2.time
+                })
+                
                 self.conversationView.reloadData()
             })
 
@@ -82,8 +85,7 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
         cell.cellMessage.text = messages[indexPath.row].message
         
-        
-        cell.frame.size = CGSize(width: 200, height: (cell.cellMessage.text?.getEstimatedHeight(width: 200, font: UIFont(name: "Helvetica", size: 16)!))!)
+        cell.frame.size = CGSize(width: Constants.Screen.subWidth, height: (cell.cellMessage.text?.getEstimatedHeight(width: Constants.Screen.subWidth, font: UIFont(name: "Helvetica", size: 16)!))!)
         
         // Center
         cell.cellMessage.textAlignment = .center
