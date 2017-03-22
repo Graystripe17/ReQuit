@@ -17,7 +17,13 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     
     @IBOutlet weak var messageField: UITextField!
     
+    @IBOutlet weak var sendButton: UIButton!
+    
     @IBOutlet weak var bottomBar: UIView!
+    
+    @IBOutlet weak var screenView: UIView!
+    
+    
     
     let screenSize = UIScreen.main.bounds
     
@@ -78,7 +84,36 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         observeMessages()
         
         conversationView.bringSubview(toFront: bottomBar)
-
+        
+        screenView.backgroundColor = UIColor.brown
+        
+        
+        bottomBar.translatesAutoresizingMaskIntoConstraints = false
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+        messageField.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        /*
+        
+        // left, right, bottom, height
+        bottomBar.leadingAnchor.constraint(equalTo: screenView.leadingAnchor).isActive = true
+        bottomBar.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: 8).isActive = true
+        bottomBar.bottomAnchor.constraint(equalTo: screenView.bottomAnchor).isActive = true
+        bottomBar.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        // width, right
+        sendButton.widthAnchor.constraint(equalToConstant: 8).isActive = true
+        sendButton.trailingAnchor.constraint(equalTo: screenView.trailingAnchor, constant: 8).isActive = true
+        sendButton.centerYAnchor.constraint(equalTo: bottomBar.centerYAnchor).isActive = true
+        
+        // left, right
+        messageField.leadingAnchor.constraint(equalTo: screenView.leadingAnchor).isActive = true
+        messageField.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: 8).isActive = true
+        
+        */
+        
+        
+        
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
