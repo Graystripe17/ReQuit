@@ -14,8 +14,8 @@
             <objects>
                 <viewController id="ryk-Ed-haa" customClass="BeginViewController" customModule="ReQuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="DtW-Om-2QS"/>
-                        <viewControllerLayoutGuide type="bottom" id="9Gp-b7-Z7d"/>
+                        <viewControllerLayoutGuide type="top" id="Y3d-tu-AGu"/>
+                        <viewControllerLayoutGuide type="bottom" id="C42-cD-BUa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jQU-Fb-Jta">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -83,8 +83,8 @@
             <objects>
                 <viewController id="T3Q-Ac-Pvc" customClass="SignInViewController" customModule="ReQuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="s80-zs-vuf"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ylu-EA-7G1"/>
+                        <viewControllerLayoutGuide type="top" id="noT-7i-j8S"/>
+                        <viewControllerLayoutGuide type="bottom" id="HP4-Ld-sC7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mQL-Rz-fHc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -132,8 +132,8 @@
             <objects>
                 <viewController id="FtU-Vw-6Zc" customClass="BeginViewController2" customModule="ReQuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kQx-C2-Io6"/>
-                        <viewControllerLayoutGuide type="bottom" id="Lia-uT-3He"/>
+                        <viewControllerLayoutGuide type="top" id="esr-v7-hjV"/>
+                        <viewControllerLayoutGuide type="bottom" id="P23-of-sx9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Nn8-Lh-l7B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -187,8 +187,8 @@
             <objects>
                 <viewController id="Ga1-ro-7TU" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OKd-iH-3fK"/>
-                        <viewControllerLayoutGuide type="bottom" id="HNy-IR-k9N"/>
+                        <viewControllerLayoutGuide type="top" id="gJH-RK-c5R"/>
+                        <viewControllerLayoutGuide type="bottom" id="uIT-T7-uMD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="IcW-n1-T4y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -223,8 +223,8 @@
             <objects>
                 <viewController id="Iqi-HI-VfF" customClass="AddDataViewController" customModule="ReQuit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SMv-Za-wZg"/>
-                        <viewControllerLayoutGuide type="bottom" id="H4m-Pv-ELj"/>
+                        <viewControllerLayoutGuide type="top" id="yEr-lS-nPn"/>
+                        <viewControllerLayoutGuide type="bottom" id="X77-lC-G06"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rXf-dk-msf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -272,8 +272,8 @@
             <objects>
                 <viewController title="Title" id="DjZ-Fi-IQ6" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="s83-63-NDB"/>
-                        <viewControllerLayoutGuide type="bottom" id="CG9-al-aZY"/>
+                        <viewControllerLayoutGuide type="top" id="Y6P-Tg-ct0"/>
+                        <viewControllerLayoutGuide type="bottom" id="igk-ne-ORv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Mdk-oL-iJj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -316,11 +316,9 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZY-GA-5LB">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZY-GA-5LB">
                                             <rect key="frame" x="93" y="107" width="114" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="114" id="uvl-E8-qwj"/>
-                                            </constraints>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -361,45 +359,31 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <view key="backgroundView" contentMode="center" id="WQj-p3-Hyl">
-                            <rect key="frame" x="0.0" y="-64" width="375" height="667"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2yd-vh-j9f">
-                                    <rect key="frame" x="0.0" y="376" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="391" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWE-Fn-K0J">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWE-Fn-K0J">
                                             <rect key="frame" x="312" y="0.0" width="50" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="lv9-bG-GnP"/>
-                                            </constraints>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Send"/>
                                             <connections>
                                                 <action selector="sendButtonPressed:" destination="3xP-K1-qwM" eventType="touchUpInside" id="T2G-ay-SEy"/>
                                             </connections>
                                         </button>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSA-js-oRa">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSA-js-oRa">
                                             <rect key="frame" x="8" y="1" width="296" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="tWE-Fn-K0J" secondAttribute="trailing" constant="13" id="46m-0e-87O"/>
-                                        <constraint firstItem="VSA-js-oRa" firstAttribute="leading" secondItem="2yd-vh-j9f" secondAttribute="leading" constant="8" id="5G8-3O-cLF"/>
-                                        <constraint firstAttribute="bottom" secondItem="tWE-Fn-K0J" secondAttribute="bottom" id="OGv-bG-lQ3"/>
-                                        <constraint firstAttribute="bottom" secondItem="tWE-Fn-K0J" secondAttribute="bottom" id="Qay-tK-fPu"/>
-                                        <constraint firstItem="tWE-Fn-K0J" firstAttribute="leading" secondItem="VSA-js-oRa" secondAttribute="trailing" constant="8" id="aWD-6Z-Kfb"/>
-                                        <constraint firstAttribute="bottom" secondItem="VSA-js-oRa" secondAttribute="bottom" constant="7" id="of8-Yz-3Ld"/>
-                                        <constraint firstAttribute="trailing" secondItem="tWE-Fn-K0J" secondAttribute="trailing" constant="8" id="vbt-44-vac"/>
-                                    </constraints>
                                 </view>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="2yd-vh-j9f" firstAttribute="leading" secondItem="WQj-p3-Hyl" secondAttribute="leading" id="07H-Wa-SIV"/>
-                                <constraint firstItem="2yd-vh-j9f" firstAttribute="width" secondItem="WQj-p3-Hyl" secondAttribute="width" id="3j3-dc-P2v"/>
-                                <constraint firstAttribute="bottom" secondItem="2yd-vh-j9f" secondAttribute="bottom" id="UnP-l4-ajT"/>
-                            </constraints>
                         </view>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottomRight" reuseIdentifier="cellId" id="yJr-mJ-8OU" customClass="ChatMessageCell" customModule="ReQuit" customModuleProvider="target">
@@ -434,6 +418,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="dmK-85-LLb"/>
                     <connections>
+                        <outlet property="baseView" destination="WQj-p3-Hyl" id="381-yH-5lh"/>
                         <outlet property="bottomBar" destination="2yd-vh-j9f" id="QTx-UO-ade"/>
                         <outlet property="conversationView" destination="teA-as-iNn" id="CNe-om-Qjm"/>
                         <outlet property="messageField" destination="VSA-js-oRa" id="k1g-tj-xfS"/>
@@ -483,8 +468,8 @@
             <objects>
                 <viewController id="KcS-0w-uX1" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="EOq-qC-iEh"/>
-                        <viewControllerLayoutGuide type="bottom" id="GeT-gh-hsW"/>
+                        <viewControllerLayoutGuide type="top" id="fKM-ti-0kd"/>
+                        <viewControllerLayoutGuide type="bottom" id="T7v-WE-ea7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="a5M-im-fia">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>

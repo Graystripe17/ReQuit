@@ -19,6 +19,9 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     
     @IBOutlet weak var bottomBar: UIView!
     
+    @IBOutlet weak var baseView: UIView!
+    
+    
     let screenSize = UIScreen.main.bounds
     
     
@@ -78,8 +81,18 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         observeMessages()
         
         conversationView.bringSubview(toFront: bottomBar)
+        
+        bottomBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        
 
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print(bottomBar.bottomAnchor)
+        print(baseView.bottomAnchor)
+    }
+    
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
