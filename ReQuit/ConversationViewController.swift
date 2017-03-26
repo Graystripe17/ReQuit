@@ -19,7 +19,7 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     
     @IBOutlet weak var bottomBar: UIView!
     
-    @IBOutlet weak var baseView: UIView!
+    @IBOutlet weak var sendButton: UIButton!
     
     
     let screenSize = UIScreen.main.bounds
@@ -82,15 +82,53 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         
         conversationView.bringSubview(toFront: bottomBar)
         
+        
+        // Setup BottomBar
+        bottomBar.backgroundColor = UIColor.white
         bottomBar.translatesAutoresizingMaskIntoConstraints = false
         
+        view.addSubview(bottomBar)
+        
+        
+        //x,y,w,h
+        bottomBar.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        bottomBar.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        bottomBar.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        bottomBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+        bottomBar.addSubview(sendButton)
         
 
+        //x,y,w,h
+        sendButton.rightAnchor.constraint(equalTo: bottomBar.rightAnchor).isActive = true
+        sendButton.centerYAnchor.constraint(equalTo: bottomBar.centerYAnchor).isActive = true
+        sendButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        sendButton.heightAnchor.constraint(equalTo: bottomBar.heightAnchor).isActive = true
+        
+        
+        //x,y,w,h
+        messageField.leftAnchor.constraint(equalTo: bottomBar.leftAnchor, constant: 8).isActive = true
+        messageField.centerYAnchor.constraint(equalTo: bottomBar.centerYAnchor).isActive = true
+        messageField.rightAnchor.constraint(equalTo: bottomBar.leftAnchor).isActive = true
+        messageField.heightAnchor.constraint(equalTo: bottomBar.heightAnchor).isActive = true
+        
+        // Line entirely programatically
+        let separatorLineView = UIView()
+        separatorLineView.backgroundColor = UIColor(red: 220, green: 220, blue: 220, alpha: 1)
+        separatorLineView.translatesAutoresizingMaskIntoConstraints = false
+        messageField.addSubview(separatorLineView)
+        
+        //x,y,w,h
+        separatorLineView.leftAnchor.constraint(equalTo: messageField.leftAnchor).isActive = true
+        separatorLineView.topAnchor.constraint(equalTo: messageField.topAnchor).isActive = true
+        separatorLineView.widthAnchor.constraint(equalTo: messageField.widthAnchor).isActive = true
+        separatorLineView.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         print(bottomBar.bottomAnchor)
-        print(baseView.bottomAnchor)
     }
     
     
@@ -138,8 +176,6 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         self.ref.child("chats").child(chatId).childByAutoId().setValue(payload)
         
     }
-    
-    
 
 }
 
