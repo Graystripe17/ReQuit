@@ -94,6 +94,7 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
                 self.chatsList.append(Chat(chatId: chatIdKey, targetChat: secondDict))
             }
             // After all of them have been appended, refresh the table.
+            // Beware of login bug
             DispatchQueue.main.async(execute: {
                 self.chatsTable.reloadData()
             })
