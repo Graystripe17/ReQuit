@@ -11,7 +11,7 @@ import Foundation
 struct ChatSummary {
     let name: String
     let read: Bool
-    let isAnon: Bool
+    let isAnon: Bool // This variable is not critical
     let chatId: String
     
     // Meta data for table

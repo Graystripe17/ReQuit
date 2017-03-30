@@ -77,15 +77,18 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         // Variable captured by closure before being initialized,
         // Singular read of "users/username" which gives a list of chatIDs
         // Possible change to .childAdded
-        ref.child("users").child(currentUser.uid).queryOrdered(byChild: "time").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("users").child(currentUser.uid).child("chats").queryOrdered(byChild: "time").observeSingleEvent(of: .value, with: { (snapshot) in
             guard snapshot.exists() else {
                 print("Error: Path not found")
                 return
             }
             
             let value = snapshot.value as? NSDictionary
+            
+            var chatsReturned = 0;
+            
             // Convert a dict of dicts into an array of dicts
-            for (chatIdKey, secondDict) in value?["chats"] as! [String: NSDictionary] {
+            for (chatIdKey, secondDict) in value as! [String: NSDictionary] {
                 
                 self.ref.child("chats").child(chatIdKey).queryLimited(toLast: 1).observeSingleEvent(of: .value, with: { (snapshot) in
                     let metaValue = snapshot.value as? NSDictionary
@@ -93,15 +96,16 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
                     // This only appends metadata for the last chat
                     // Does not load every chat message
                     self.chatsList.append(ChatSummary(chatId: chatIdKey, targetChat: secondDict, metaData: metaValue!))
+                    chatsReturned += 1
                     
-                    
-                    // if self.chatsList.count == value?.count {
+                    // Reload only if this callback is the final one to return
+                    if chatsReturned == value?.count {
                         // Check to see if it is the last iteration of the for loop
                         // After all of them have been appended, refresh the table.
                         DispatchQueue.main.async(execute: {
                             self.chatsTable.reloadData()
                         })
-                    // }
+                    }
                     
                 })
                 
