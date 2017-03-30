@@ -33,7 +33,7 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     
     var messages: [FIRDataSnapshot]! = [FIRDataSnapshot()]
     
-    var chatsList = [Chat]()
+    var chatsList = [ChatSummary]()
     
     fileprivate var _refHandle: FIRDatabaseHandle!
     
@@ -76,6 +76,7 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     func updateAndReload() {
         // Variable captured by closure before being initialized,
         // Singular read of "users/username" which gives a list of chatIDs
+        // Possible change to .childAdded
         ref.child("users").child(currentUser.uid).queryOrdered(byChild: "time").observeSingleEvent(of: .value, with: { (snapshot) in
             guard snapshot.exists() else {
                 print("Error: Path not found")
@@ -91,14 +92,20 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
                     
                     // This only appends metadata for the last chat
                     // Does not load every chat message
-                    self.chatsList.append(Chat(chatId: chatIdKey, targetChat: secondDict, metaData: metaValue!))
+                    self.chatsList.append(ChatSummary(chatId: chatIdKey, targetChat: secondDict, metaData: metaValue!))
+                    
+                    
+                    // if self.chatsList.count == value?.count {
+                        // Check to see if it is the last iteration of the for loop
+                        // After all of them have been appended, refresh the table.
+                        DispatchQueue.main.async(execute: {
+                            self.chatsTable.reloadData()
+                        })
+                    // }
+                    
                 })
                 
             }
-            // After all of them have been appended, refresh the table.
-            DispatchQueue.main.async(execute: {
-                self.chatsTable.reloadData()
-            })
         })
     }
 
@@ -171,10 +178,31 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         
         if weeks > 1 {
             return "1+ weeks"
-        } else {
-            // OCSDCIOJ
         }
-        
+        else if weeks == 1 {
+            return "1 week"
+        }
+        else if days > 1 {
+            return String(days) + " days"
+        }
+        else if days == 1{
+            return "1 day"
+        }
+        else if hours > 1 {
+            return String(hours) + " hours"
+        }
+        else if hours == 1 {
+            return "1 hour"
+        }
+        else if minutes > 1 {
+            return String(minutes) + " minutes"
+        }
+        else if minutes == 1 {
+            return "1 minute"
+        }
+        else {
+            return "Now"
+        }
         
     }
     

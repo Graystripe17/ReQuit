@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		4F27BF021E22F081001A1807 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F27BF011E22F081001A1807 /* AppState.swift */; };
 		4F27BF041E22F434001A1807 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F27BF031E22F434001A1807 /* Constants.swift */; };
+		4F28602E1E8D512600616AE0 /* ChatSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F28602D1E8D512600616AE0 /* ChatSummary.swift */; };
 		4F2A310E1E2DC45E00BB6AFD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2A310D1E2DC45E00BB6AFD /* SignInViewController.swift */; };
 		4F2D3BD31E77984C00A3FE04 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D3BD21E77984C00A3FE04 /* ChatMessageCell.swift */; };
 		4F2E7AB31E5E16400013D997 /* BeginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E7AB21E5E16400013D997 /* BeginViewController2.swift */; };
-		4F2ECE691E770E98004A2188 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2ECE681E770E98004A2188 /* Chat.swift */; };
 		4F5CDC791E1D9B6900CE3B25 /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CDC781E1D9B6900CE3B25 /* NewContactViewController.swift */; };
 		4F5EC88F1E79D0E200E0A25A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EC88E1E79D0E200E0A25A /* Message.swift */; };
 		4F663C9E1E21B1540099177D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F663C9D1E21B1540099177D /* GoogleService-Info.plist */; };
@@ -55,10 +55,10 @@
 		39A64796CA3062D4A8EB78C6 /* Pods_ReQuitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReQuitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F27BF011E22F081001A1807 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		4F27BF031E22F434001A1807 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4F28602D1E8D512600616AE0 /* ChatSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSummary.swift; sourceTree = "<group>"; };
 		4F2A310D1E2DC45E00BB6AFD /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		4F2D3BD21E77984C00A3FE04 /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		4F2E7AB21E5E16400013D997 /* BeginViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginViewController2.swift; sourceTree = "<group>"; };
-		4F2ECE681E770E98004A2188 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		4F5CDC781E1D9B6900CE3B25 /* NewContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
 		4F5EC88E1E79D0E200E0A25A /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		4F663C9D1E21B1540099177D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -141,10 +141,10 @@
 		4F998F201DA5FB8200A9F8DC /* ReQuit */ = {
 			isa = PBXGroup;
 			children = (
+				4F28602D1E8D512600616AE0 /* ChatSummary.swift */,
 				4F2E7AB21E5E16400013D997 /* BeginViewController2.swift */,
 				4FA1D5D11E5D3986007CF30A /* BeginViewController.swift */,
 				4FA1D5D21E5D3986007CF30A /* UserTableViewCell.swift */,
-				4F2ECE681E770E98004A2188 /* Chat.swift */,
 				4FA1D5D31E5D3986007CF30A /* UserTableViewController.swift */,
 				4FA1D5D41E5D3986007CF30A /* AddDataViewController.swift */,
 				4F2A310D1E2DC45E00BB6AFD /* SignInViewController.swift */,
@@ -490,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F998F221DA5FB8200A9F8DC /* AppDelegate.swift in Sources */,
+				4F28602E1E8D512600616AE0 /* ChatSummary.swift in Sources */,
 				4FA1D5D71E5D3986007CF30A /* UserTableViewController.swift in Sources */,
 				4FE5CC901E7745C4003C5A97 /* ConversationViewController.swift in Sources */,
 				4F27BF021E22F081001A1807 /* AppState.swift in Sources */,
@@ -497,7 +498,6 @@
 				4FA1D5D81E5D3986007CF30A /* AddDataViewController.swift in Sources */,
 				4F2D3BD31E77984C00A3FE04 /* ChatMessageCell.swift in Sources */,
 				4FA1D5D61E5D3986007CF30A /* UserTableViewCell.swift in Sources */,
-				4F2ECE691E770E98004A2188 /* Chat.swift in Sources */,
 				4F2A310E1E2DC45E00BB6AFD /* SignInViewController.swift in Sources */,
 				4F2E7AB31E5E16400013D997 /* BeginViewController2.swift in Sources */,
 				4FA1D5D51E5D3986007CF30A /* BeginViewController.swift in Sources */,
