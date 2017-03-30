@@ -16,6 +16,6 @@ struct Message {
     init (messageDetails: NSDictionary?) {
         self.sender = messageDetails?["sender"] as? String ?? "Anon" // If nil, anon
         self.message = messageDetails?["message"] as? String ?? "Message not found"
-        self.time = (messageDetails?["time"] as? Double)!
+        self.time = messageDetails?["time"] as? Double ?? NSDate().timeIntervalSince1970
     }
 }

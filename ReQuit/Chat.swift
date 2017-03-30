@@ -9,25 +9,26 @@
 import Foundation
 
 struct Chat {
-    let name: String // If nil, anon
-    let lastMessage: String
+    let name: String
     let read: Bool
-    let updatedTime: Int
+    let isAnon: Bool
     let chatId: String
     
-    init (chatId: String, targetChat: NSDictionary) {
+    // Meta data for table
+    let message: String
+    let sender: String
+    let time: Int
+    
+    
+    init (chatId: String, targetChat: NSDictionary, metaData: NSDictionary) {
         self.name = targetChat["name"] as? String ?? "Anon" // If nil, anon
-        self.lastMessage = targetChat["last"] as? String ?? "Message not found"
+        self.isAnon = targetChat["isAnon"] as? Bool ?? false
         self.read = targetChat["read"] as? Bool ?? false
-        self.updatedTime = targetChat["updated"] as? Int ?? 0
         self.chatId = chatId
+        
+        self.message = metaData["message"] as? String ?? "No message found"
+        self.sender = metaData["sender"] as? String ?? "No sender found"
+        self.time = metaData["time"] as? Int ?? 0
     }
     
-    init (name: String?, lastMessage: String?, read: Bool?, updatedTime: Int?) {
-        self.name = name ?? "Anon"
-        self.lastMessage = lastMessage ?? "Message not found"
-        self.read = read ?? false
-        self.updatedTime = updatedTime ?? 0
-        self.chatId = "NO CHAT ID"
-    }
 }

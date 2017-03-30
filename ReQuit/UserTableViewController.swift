@@ -70,17 +70,13 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         _refHandle = self.ref.child("messages").observe(.childAdded, with: {[weak self] (snapshot) -> Void in
             // Beware of forced unwrapping
             self?.messages.append(snapshot)
-            // This code essentially does nothing at this point in time
-//            self?.chatsTable.beginUpdates()
-//                self?.chatsTable.insertRows(at: [IndexPath(row: (self?.messages.count)! - 1, section: 0)], with: .automatic)
-//            self?.chatsTable.endUpdates()
         })
     }
     
     func updateAndReload() {
         // Variable captured by closure before being initialized,
         // Singular read of "users/username" which gives a list of chatIDs
-        ref.child("users").child(currentUser.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("users").child(currentUser.uid).queryOrdered(byChild: "time").observeSingleEvent(of: .value, with: { (snapshot) in
             guard snapshot.exists() else {
                 print("Error: Path not found")
                 return
@@ -89,12 +85,17 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
             let value = snapshot.value as? NSDictionary
             // Convert a dict of dicts into an array of dicts
             for (chatIdKey, secondDict) in value?["chats"] as! [String: NSDictionary] {
-                // This only appends metadata for the last chat
-                // Does not load every chat message
-                self.chatsList.append(Chat(chatId: chatIdKey, targetChat: secondDict))
+                
+                self.ref.child("chats").child(chatIdKey).queryLimited(toLast: 1).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let metaValue = snapshot.value as? NSDictionary
+                    
+                    // This only appends metadata for the last chat
+                    // Does not load every chat message
+                    self.chatsList.append(Chat(chatId: chatIdKey, targetChat: secondDict, metaData: metaValue!))
+                })
+                
             }
             // After all of them have been appended, refresh the table.
-            // Beware of login bug
             DispatchQueue.main.async(execute: {
                 self.chatsTable.reloadData()
             })
@@ -129,15 +130,17 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         
         let targetChat = chatsList[indexPath.row]
         
+        
+        
+        
         cell.nameLabel.text = targetChat.name
-        cell.messageLabel.text = targetChat.lastMessage
-        cell.dateLabel.text = targetChat.updatedTime.description
+        cell.messageLabel.text = targetChat.message
+        cell.dateLabel.text = convertToReadableElapsed(seconds: targetChat.time)
         
         cell.setAppearance(disabled: targetChat.read)
         
         return cell
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Set value of chatId
@@ -152,11 +155,29 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         }
     }
     
-    
     deinit {
         // Remove observer
     }
 
+    func convertToReadableElapsed(seconds: Double) -> String {
+        
+        let elapsed = NSDate().timeIntervalSinceNow - seconds
+        
+        let seconds = elapsed
+        let minutes = seconds / 60
+        let hours = minutes / 60
+        let days = hours / 24
+        let weeks = days / 7
+        
+        if weeks > 1 {
+            return "1+ weeks"
+        } else {
+            // OCSDCIOJ
+        }
+        
+        
+    }
+    
 }
 
 
