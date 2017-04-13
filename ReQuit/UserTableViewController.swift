@@ -45,6 +45,8 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         super.viewDidLoad()
     }
     
+
+    
     
     required init?(coder aDecoder: NSCoder) {
         // Properties must be initialized before super.init call

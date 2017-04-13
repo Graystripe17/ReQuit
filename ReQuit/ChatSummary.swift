@@ -18,7 +18,7 @@ struct ChatSummary {
     // Meta data is NOT going to change
     let message: String
     let sender: String
-    let time: Double
+    let time: Double//NOT REAL DON'T DO IT YOU'LL DIE
     
     
     init (chatId: String, targetChat: NSDictionary, metaData: NSDictionary) {

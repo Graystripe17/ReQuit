@@ -65,6 +65,12 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
                 })
                 
                 self.conversationView.reloadData()
+                
+                let item = self.collectionView(self.conversationView, numberOfItemsInSection: 0) - 1
+                let lastItemIndex = NSIndexPath(item: item, section: 0)
+                self.collectionView?.scrollToItem(at: lastItemIndex as IndexPath, at: UICollectionViewScrollPosition.top, animated: false)
+                
+                
             })
 
             
