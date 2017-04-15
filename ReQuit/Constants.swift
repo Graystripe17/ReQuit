@@ -22,7 +22,7 @@ struct Constants {
     struct Screen {
         static let screenSize = UIScreen.main.bounds
         static let subWidth = screenSize.width * 0.75
-        
+        static let screenWidth = screenSize.width
     }
     
 }

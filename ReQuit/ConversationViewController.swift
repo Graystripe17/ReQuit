@@ -88,10 +88,13 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         
         conversationView.bringSubview(toFront: bottomBar)
         
+        // Stop Autoresize
+        bottomBar.translatesAutoresizingMaskIntoConstraints = false
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+
         
         // Setup BottomBar
         bottomBar.backgroundColor = UIColor.white
-        bottomBar.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(bottomBar)
         
@@ -102,7 +105,6 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         bottomBar.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         bottomBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        sendButton.translatesAutoresizingMaskIntoConstraints = false
         bottomBar.addSubview(sendButton)
         
 
@@ -139,10 +141,18 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
+        
+        cell.translatesAutoresizingMaskIntoConstraints = false
+        
+        
         cell.cellMessage.text = messages[indexPath.row].message
         
-        cell.frame.size = CGSize(width: Constants.Screen.subWidth, height: (cell.cellMessage.text?.getEstimatedHeight(width: Constants.Screen.subWidth, font: UIFont(name: "Helvetica", size: 16)!))!)
+        // Partial coverage
+        // cell.frame.size = CGSize(width: Constants.Screen.subWidth, height: (cell.cellMessage.text?.getEstimatedHeight(width: Constants.Screen.subWidth, font: UIFont(name: "Helvetica", size: 16)!))!)
+        cell.frame.size = CGSize(width: Constants.Screen.screenSize.width, height: (cell.cellMessage.text?.getEstimatedHeight(width: Constants.Screen.screenSize.width, font: UIFont(name: "Helvetica", size: 16)!))!)
+        
         
         // Center
         cell.cellMessage.textAlignment = .center
@@ -151,8 +161,16 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         if messages[indexPath.row].sender == currentUser.uid {
             // You sent this message
             cell.backgroundColor = UIColor.purple
+
         } else {
             cell.backgroundColor = UIColor.yellow
+            // This is a problematic line "Does the constraint or its anchors reference items in different view hierarchies
+            
+            
+            // cell.rightAnchor.constraint(equalTo: collectionView.rightAnchor).isActive = true
+            
+            
+            
         }
         
         return cell
