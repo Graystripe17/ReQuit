@@ -12,7 +12,7 @@ import Firebase
 
 class ConversationViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private let cellId = "cellId"
-    var chatId: String!
+    var chatData: ChatSummary!
     @IBOutlet var conversationView: UICollectionView!
     
     @IBOutlet weak var messageField: UITextField!
@@ -45,9 +45,8 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
     
     func observeMessages() {
         
-        // Load messages of chatId
         // Should be .childAdded
-        ref.child("chats").child(chatId).observe(.childAdded, with: { (snapshot) in
+        ref.child("chats").child(chatData.chatId).observe(.childAdded, with: { (snapshot) in
             guard snapshot.exists() else {
                 return
             }
@@ -66,19 +65,19 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
                 
                 self.conversationView.reloadData()
                 
-                let item = self.collectionView(self.conversationView, numberOfItemsInSection: 0) - 1
-                let lastItemIndex = NSIndexPath(item: item, section: 0)
-                self.collectionView?.scrollToItem(at: lastItemIndex as IndexPath, at: UICollectionViewScrollPosition.top, animated: false)
-                
+                self.scrollToBottom(animated: false)
                 
             })
 
             
         })
-//        self.conversationView.performBatchUpdates({
-//            let location = [IndexPath(row: (self.messages.count) - 1, section: 0)]
-//            self.conversationView.insertItems(at: location)
-//        }, completion: {(success) in print(success)})
+        
+    }
+    
+    func scrollToBottom(animated: Bool) {
+        let item = self.collectionView(self.conversationView, numberOfItemsInSection: 0) - 1
+        let lastItemIndex = NSIndexPath(item: item, section: 0)
+        self.collectionView?.scrollToItem(at: lastItemIndex as IndexPath, at: UICollectionViewScrollPosition.top, animated: animated)
         
     }
     
@@ -86,12 +85,13 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         super.viewDidLoad()
         observeMessages()
         
+        self.title = chatData.isAnon ? chatData.partnerName : "Hidden"
+        
         conversationView.bringSubview(toFront: bottomBar)
         
         // Stop Autoresize
         bottomBar.translatesAutoresizingMaskIntoConstraints = false
         sendButton.translatesAutoresizingMaskIntoConstraints = false
-
         
         // Setup BottomBar
         bottomBar.backgroundColor = UIColor.white
@@ -146,12 +146,11 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
         
         cell.translatesAutoresizingMaskIntoConstraints = false
         
-        
         cell.cellMessage.text = messages[indexPath.row].message
         
         // Partial coverage
-        // cell.frame.size = CGSize(width: Constants.Screen.subWidth, height: (cell.cellMessage.text?.getEstimatedHeight(width: Constants.Screen.subWidth, font: UIFont(name: "Helvetica", size: 16)!))!)
-        cell.frame.size = CGSize(width: Constants.Screen.screenSize.width, height: (cell.cellMessage.text?.getEstimatedHeight(width: Constants.Screen.screenSize.width, font: UIFont(name: "Helvetica", size: 16)!))!)
+        cell.frame.size = CGSize(width: Constants.Screen.subWidth, height: (cell.cellMessage.text?.getEstimatedHeight(width: Constants.Screen.subWidth, font: UIFont(name: "Helvetica", size: 16)!))!)
+        // cell.frame.size = CGSize(width: Constants.Screen.screenSize.width, height: (cell.cellMessage.text?.getEstimatedHeight(width: Constants.Screen.screenSize.width, font: UIFont(name: "Helvetica", size: 16)!))!)
         
         
         // Center
@@ -166,9 +165,7 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
             cell.backgroundColor = UIColor.yellow
             // This is a problematic line "Does the constraint or its anchors reference items in different view hierarchies
             
-            
             // cell.rightAnchor.constraint(equalTo: collectionView.rightAnchor).isActive = true
-            
             
             
         }
@@ -197,7 +194,9 @@ class ConversationViewController: UICollectionViewController, UICollectionViewDe
             "time": NSDate().timeIntervalSince1970
         ] as [String : Any]
         
-        self.ref.child("chats").child(chatId).childByAutoId().setValue(payload)
+        self.ref.child("chats").child(chatData.chatId).childByAutoId().setValue(payload)
+        self.scrollToBottom(animated: true)
+        
         
     }
 

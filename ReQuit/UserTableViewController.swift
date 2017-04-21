@@ -39,14 +39,15 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     
     @IBOutlet var chatsTable: UITableView!
     
-    var selectedChatId: String!
+    var selectedChatData: ChatSummary!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
     
     required init?(coder aDecoder: NSCoder) {
         // Properties must be initialized before super.init call
@@ -56,19 +57,21 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         // Beware of the force unwrapped user object
         self.currentUser = (FIRAuth.auth()?.currentUser)!
         
-//        self.chatsTable.register(UserTableViewCell.self, forCellReuseIdentifier: "UserTableViewCell")
-        
         
         super.init(coder: aDecoder)
+        
+        // Populate for the first time
+        // grabInitialChats()
         
         // Uses self in a closure, must follow super.init
         // Sets up table and messages
         setUpTable()
-        
+        // Set up a listener
         updateAndReload()
     }
     
     func setUpTable() {
+        // POSSIBLE CANDIDATE FOR DELETION DOES NOTHING
         _refHandle = self.ref.child("messages").observe(.childAdded, with: {[weak self] (snapshot) -> Void in
             // Beware of forced unwrapping
             self?.messages.append(snapshot)
@@ -78,8 +81,9 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     func updateAndReload() {
         // Variable captured by closure before being initialized,
         // Singular read of "users/username" which gives a list of chatIDs
-        // Possible change to .childAdded
-        ref.child("users").child(currentUser.uid).child("chats").queryOrdered(byChild: "time").observeSingleEvent(of: .value, with: { (snapshot) in
+        // Warning: Time requires another seek
+        // queryOrdered.byChild("time") invalid
+        ref.child("users").child(currentUser.uid).child("chats").observe(.value, with: { (snapshot) in
             guard snapshot.exists() else {
                 print("Error: Path not found")
                 return
@@ -87,14 +91,14 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
             
             let value = snapshot.value as? NSDictionary
             
-            var chatsReturned = 0;
+            // Counter used to determine if chat in loop is the final one loaded
+            var chatsReturned = 0
             
             // Convert a dict of dicts into an array of dicts
             for (chatIdKey, secondDict) in value as! [String: NSDictionary] {
                 
                 self.ref.child("chats").child(chatIdKey).queryLimited(toLast: 1).observeSingleEvent(of: .value, with: { (snapshot) in
                     let metaValue = snapshot.value as? NSDictionary
-                    
                     // This only appends metadata for the last chat
                     // Does not load every chat message
                     self.chatsList.append(ChatSummary(chatId: chatIdKey, targetChat: secondDict, metaData: metaValue!))
@@ -105,6 +109,10 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
                         // Check to see if it is the last iteration of the for loop
                         // After all of them have been appended, refresh the table.
                         DispatchQueue.main.async(execute: {
+                            self.chatsList.sort(by: {
+                                (c1, c2) in
+                                return c1.time < c2.time
+                            })
                             self.chatsTable.reloadData()
                         })
                     }
@@ -144,9 +152,7 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
         let targetChat = chatsList[indexPath.row]
         
         
-        
-        
-        cell.nameLabel.text = targetChat.name
+        cell.nameLabel.text = targetChat.isAnon ? targetChat.partnerName : "Hidden"
         cell.messageLabel.text = targetChat.message
         cell.dateLabel.text = convertToReadableElapsed(seconds: targetChat.time)
         
@@ -157,14 +163,14 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Set value of chatId
-        selectedChatId = chatsList[indexPath.row].chatId
+        selectedChatData = chatsList[indexPath.row]
         performSegue(withIdentifier: "openConversation", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openConversation" {
             let conversationViewController = segue.destination as! ConversationViewController
-            conversationViewController.chatId = selectedChatId
+            conversationViewController.chatData = selectedChatData
         }
     }
     
@@ -213,22 +219,6 @@ class UserTableViewController: UITableViewController, UICollectionViewDelegateFl
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

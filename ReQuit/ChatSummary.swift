@@ -9,27 +9,32 @@
 import Foundation
 
 struct ChatSummary {
-    let name: String
-    let read: Bool
-    let isAnon: Bool // This variable is not critical
+    
     let chatId: String
     
+    let isAnon: Bool
+    let read: Bool
+    let partnerName: String
+    
     // Meta data for table
-    // Meta data is NOT going to change
+    // Must be dug up in a second query
     let message: String
     let sender: String
-    let time: Double//NOT REAL DON'T DO IT YOU'LL DIE
+    let time: Double
     
     
     init (chatId: String, targetChat: NSDictionary, metaData: NSDictionary) {
-        self.name = targetChat["name"] as? String ?? "Anon" // If nil, anon
-        self.isAnon = targetChat["isAnon"] as? Bool ?? false
-        self.read = targetChat["read"] as? Bool ?? false
         self.chatId = chatId
         
-        self.message = metaData["message"] as? String ?? "No message found"
-        self.sender = metaData["sender"] as? String ?? "No sender found"
-        self.time = metaData["time"] as? Double ?? 0
+        self.isAnon = targetChat["isAnon"] as? Bool ?? false
+        self.read = targetChat["read"] as? Bool ?? false
+        self.partnerName = targetChat["partnerName"] as? String ?? "Anon"
+        
+        let lastMessageData = metaData.allValues.first as! NSDictionary
+        
+        self.message = lastMessageData["message"] as? String ?? "No message found"
+        self.sender = lastMessageData["sender"] as? String ?? "No sender found"
+        self.time = lastMessageData["time"] as? Double ?? 0
     }
     
 }
